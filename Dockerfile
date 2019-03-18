@@ -19,7 +19,7 @@ RUN wget https://ftp.gnu.org/gnu/binutils/binutils-2.30.tar.gz \
     && rm binutils-2.30.tar.gz
 WORKDIR /home/h8300-tools/binutils-build
 RUN ./../binutils-2.30/configure \
-        --prefix=/usr/local/h8300-elf \
+        --prefix=/usr/local \
         --target=h8300-elf \
     && make \
     && make install
@@ -40,7 +40,7 @@ RUN ./../gcc-7.3.0/configure \
         --enable-languages=c \
         --enable-lto \
         --enable-sjlj-exceptions \
-        --prefix=/usr/local/h8300-elf \
+        --prefix=/usr/local \
         --target=h8300-elf \
         --with-gmp=/usr/local \
         --with-mpfr=/usr/local \
@@ -52,4 +52,4 @@ RUN ./../gcc-7.3.0/configure \
 
 WORKDIR /home
 # RUN rm -rf /home/h8300-tools
-ENV PATH $PATH:/usr/local/h8300-elf/bin
+# ENV PATH $PATH:/usr/local/h8300-elf/bin
